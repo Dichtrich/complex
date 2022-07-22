@@ -21,3 +21,15 @@ after_success:
   - docker push dichtrich/complex-nginx
   - docker push dichtrich/complex-server
   - docker push dichtrich/complex-worker 
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "multi-docker"
+  env: "Multidocker-env-1"
+  bucket_name: "elasticbeanstalk-eu-west-1-667977186606"
+  bucket_path: "docker-multi"
+  on:
+    branch: main
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"                                                                                                             
